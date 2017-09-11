@@ -42,5 +42,7 @@
 	<modules>
 		<module>configuration</module>
 		<module>client-boot</module>
+		<module>consumer-backing-services</module>
+		<module>provider-backing-services</module>
 	</modules>
 </project>
