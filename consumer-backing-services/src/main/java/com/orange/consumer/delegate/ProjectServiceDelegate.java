@@ -13,38 +13,38 @@ import org.springframework.web.client.RestTemplate;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @Service
-public class StudentServiceDelegate {
+public class ProjectServiceDelegate {
 
 	@Autowired
     RestTemplate restTemplate;
 	
-	@Value("${student.service.url}")
-	String studentServiceUrl;
+	@Value("${project.service.url}")
+	String projectServiceUrl;
      
-    @HystrixCommand(fallbackMethod = "callStudentServiceAndGetData_Fallback")
-    public String callStudentServiceAndGetData(String schoolname) {
+    @HystrixCommand(fallbackMethod = "callProjectServiceAndGetData_Fallback")
+    public String callProjectServiceAndGetData(String departmentname) {
  
-        System.out.println("Getting School details for " + schoolname);
+        System.out.println("Getting department details for " + departmentname);
  
         String response = restTemplate
-                .exchange(studentServiceUrl + "/school/{schoolname}/students"
+                .exchange(projectServiceUrl + "/department/{departmentname}/projects"
                 , HttpMethod.GET
                 , null
                 , new ParameterizedTypeReference<String>() {
-            }, schoolname).getBody();
+            }, departmentname).getBody();
  
         System.out.println("Response Received as " + response + " -  " + new Date());
  
-        return "NORMAL FLOW !!! - School Name -  " + schoolname + " :::  " +
-                    " Student Details " + response + " -  " + new Date();
+        return "NORMAL FLOW !!! - Department Name -  " + departmentname + " :::  " +
+                    " Project Details " + response + " -  " + new Date();
     }
      
     @SuppressWarnings("unused")
-    private String callStudentServiceAndGetData_Fallback(String schoolname) {
+    private String callProjectServiceAndGetData_Fallback(String departmentname) {
  
-        System.out.println("Student Service is down!!! fallback route enabled...");
+        System.out.println("Project Service is down!!! fallback route enabled...");
  
-        return "CIRCUIT BREAKER ENABLED!!! No Response From Student Service at this moment. " +
+        return "CIRCUIT BREAKER ENABLED!!! No Response From Project Service at this moment. " +
                     " Service will be back shortly - " + new Date();
     }
  
