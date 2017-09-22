@@ -44,5 +44,6 @@
 		<module>client-boot</module>
 		<module>consumer-backing-services</module>
 		<module>provider-backing-services</module>
+		<module>statefull-redis</module>
 	</modules>
 </project>
