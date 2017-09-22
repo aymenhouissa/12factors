@@ -1,0 +1,8 @@
+applications:
+- name: statefull-redis
+  host: demo-redis-${random-word}
+  memory: 512MB
+  instances: 1
+  path: target/statefull-redis-0.0.1-SNAPSHOT.jar
+  services:
+  - redis_for_test

@@ -1,0 +1,6 @@
+applications:
+- name: provider-backing-services
+  host: provider-${random-word}
+  memory: 256MB
+  instances: 1
+  path: target/provider-backing-services-0.0.1-SNAPSHOT.jar

@@ -1,0 +1,6 @@
+applications:
+- name: consumer-backing-services
+  host: consumer-${random-word}
+  memory: 256MB
+  instances: 1
+  path: target/consumer-backing-services-0.0.1-SNAPSHOT.jar
